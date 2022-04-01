@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block body %}
+    <main class="container d-flex flex-column justify-content-center">
+        <div class="row g-4 gx-lg-5 text-center">
+            <div class="col-lg py-4 d-flex flex-column justify-content-center text-shadow">
+                <h1 class="display-1 mt-3">
+                    <span class="instabook-logo"><span class="insta">Ins<span class="short-letter">t</span>a</span><span class="book">book</span></span>
+                </h1>
+                <figure class="text-center">
+                    <blockquote class="blockquote">&ldquo;So many books, so little time&rdquo;</blockquote>
+                    <figcaption class="blockquote-footer">probably not Frank Zappa</figcaption>
+                </figure>
+            </div>
+            <div class="col-lg-1 mt-0 divider-lg d-flex flex-column justify-content-center"></div>
+            <div class="col-lg py-4">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

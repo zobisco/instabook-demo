@@ -1,0 +1,17 @@
+{% extends "base_signed_in.html" %}
+{% block title %}Feed{% endblock %}
+{% block heading %}Your feed{% endblock %}
+{% block content %}
+    <hr>
+    <h3>Recent ratings</h3>
+    {% for rating in ratings %}
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title"><a href="/books/{{ rating[3] }}">{{ rating[4] }}</a></h5>
+                <h6 class="card-subtitle mb-2">{{ rating[5] }}</h6>
+                {{ rating[2] }} (<a href="/users/{{ rating[0] }}">@{{ rating[1] }}</a>) rated it <strong class="text-pink">{{ rating[6] }} star(s)</strong>.
+                Their review: <em>{{ rating[7] }}</em>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,265 @@
+/*
+** Whole page styles
+*/
+
+:root {
+    --bs-pink-rgb: 214, 51, 132;
+}
+
+@media (max-width: 991.98px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    /* Photo credit: Niklas Ohlrogge @ohlrogge on Unsplash - https://unsplash.com/photos/j-0olYcaihg */
+    background: url('stuttgart-library.jpg') center/cover no-repeat fixed;
+}
+
+body > * {
+    opacity: 0.85;
+}
+
+main {
+    min-height: 100%;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.pt-6 {
+    padding-top: 6rem !important;
+}
+
+/*
+** Typographic styles
+*/
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Prata', sans-serif;
+}
+
+.blockquote {
+    font-family: 'Prata';
+}
+
+.blockquote-footer {
+    color: var(--bs-gray-800);
+    font-style: italic;
+}
+
+.text-shadow {
+    text-shadow: 0 0 5px white;
+}
+
+.text-pink {
+    color: var(--bs-pink);
+}
+
+/*
+** Button styles
+*/
+
+.btn-pink {
+    color: white;
+    background-color: var(--bs-pink);
+    border-color: var(--bs-pink);
+}
+
+.btn-pink:hover {
+    color: white;
+    background-color: #c02673;
+    border-color: #c02673;
+}
+
+.btn-check:focus + .btn-pink,
+.btn-pink:focus {
+    color: white;
+    background-color: #aa2266;
+    border-color: #aa2266;
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-pink-rgb),.5);
+}
+
+.btn-check:active + .btn-pink, .btn-check:checked + .btn-pink,
+.btn-pink.active, .btn-pink:active,
+.show > .btn-pink.dropdown-toggle {
+    color: white;
+    background-color: #aa2266;
+    border-color: #aa2266;
+}
+
+.btn-check:active + .btn-pink:focus, .btn-check:checked + .btn-pink:focus,
+.btn-pink.active:focus, .btn-pink:active:focus,
+.show > .btn-pink.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-pink-rgb),.5);
+}
+
+.btn-pink.disabled, .btn-pink:disabled {
+    color: white;
+    background-color: #dd5599;
+    border-color: #dd5599;
+}
+
+.btn-outline-pink {
+    color: var(--bs-pink);
+    border-color: var(--bs-pink);
+}
+
+.btn-outline-pink:hover {
+    color: white;
+    background-color: var(--bs-pink);
+    border-color: var(--bs-pink);
+}
+
+.btn-check:focus + .btn-outline-pink,
+.btn-outline-pink:focus {
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-pink-rgb),.5);
+}
+
+.btn-check:active + .btn-outline-pink, .btn-check:checked + .btn-outline-pink,
+.btn-outline-pink.active, .btn-outline-pink:active,
+.btn-outline-pink.dropdown-toggle.show {
+    color: white;
+    background-color: var(--bs-pink);
+    border-color: var(--bs-pink);
+}
+
+.btn-check:active + .btn-outline-pink:focus, .btn-check:checked + .btn-outline-pink:focus,
+.btn-outline-pink.active:focus, .btn-outline-pink:active:focus,
+.btn-outline-pink.dropdown-toggle.show:focus {
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-pink-rgb),.5)
+}
+
+.btn-outline-pink.disabled, .btn-outline-pink:disabled {
+    color: var(--bs-pink);
+    background-color: transparent;
+}
+
+/*
+** Navbar styles
+*/
+
+.navbar {
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 0.5rem 1rem #0001;
+}
+
+.navbar + main {
+    padding-top: 5rem;
+}
+
+/*
+** Grid styles
+*/
+
+.divider-lg {
+    position: relative;
+}
+
+.divider-lg::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 3rem;
+}
+
+@media (min-width: 992px) {
+    .divider-lg::after {
+        content: "⋮";
+        bottom: 50%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .divider-lg::after {
+        content: "⋯";
+    }
+}
+
+/*
+** Instabook logo styles
+*/
+
+.instabook-logo {
+    margin-left: 0.5em;
+    margin-right: 0.3em;
+    line-height: 1;
+    text-shadow: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.instabook-logo * {
+    display: inline-block;
+}
+
+.instabook-logo > .insta {
+    transform: scaleX(1.2);
+    transform-origin: right;
+    color: var(--bs-pink);
+    font-family: 'Grand Hotel', sans-serif;
+    font-size: 1.25em;
+    letter-spacing: 0.0125em;
+}
+
+.instabook-logo > .insta > .short-letter {
+    transform-origin: bottom;
+    transform: scaleY(0.94);
+    margin-left: -0.025em;
+}
+
+.instabook-logo > .book {
+    color: var(--bs-blue);
+    font-family: 'Hind', sans-serif;
+    letter-spacing: -0.05em;
+    transform: scaleY(1.06) translateY(0.0125em);
+}
+
+/*
+** Form styles
+*/
+
+.form-block .form-floating > .form-control,
+.form-block button[type="submit"] {
+    position: relative;
+}
+
+.form-block button[type="submit"] {
+    z-index: 1;
+}
+
+.form-block .form-floating > .form-control:focus {
+    z-index: 2;
+}
+
+.form-block .form-floating > label {
+    z-index: 3;
+}
+
+.form-block .form-floating:not(:first-child) > .form-control,
+.form-block button[type="submit"] {
+    margin-top: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-block .form-floating:not(:last-child) > .form-control {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/*
+** Signin/signup-specific styles
+*/
+
+.col-signin, .col-signup {
+    width: 80%;
+    max-width: 22.25rem;
+    min-width: 17.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,21 @@
+{% extends "base_signed_in.html" %}
+{% block title %}{{ book_details[1] }}{% endblock %}
+{% block heading %}{{ book_details[1] }}{% endblock %}
+{% block content %}
+    <h2><span class="text-muted">By</span> {{ book_details[2] }}</h2>
+    <p class="lead"><span class="text-muted">Average rating:</span> <strong class="text-pink fw-bold">{{ book_details[3] }} star(s)</strong></p>
+    <hr>
+    <h3>Your rating</h3>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="score" class="form-label">Your score <span class="text-muted">(number between 1 and 5)</span></label>
+            <input type="number" class="form-control" name="score" id="score" value="{{ current_score }}" min="1" max="5" oninput="this.value = this.value.replace(/[^1-5]/g, '').slice(-1);">
+        </div>
+        <div class="mb-3">
+            <label for="review" class="form-label">Your review</label>
+            <textarea class="form-control" name="review" id="review" rows="2" oninput="this.value = this.value.slice(0, 255);">{{ current_review }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit rating</button>
+        <a role="button" href="/books/{{ book_details[0] }}" class="btn btn-pink ms-1">Cancel</a>
+    </form>
+{% endblock %}

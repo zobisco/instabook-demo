@@ -1,0 +1,21 @@
+{% extends "base_signed_out.html" %}
+{% block title %}Sign In{% endblock %}
+{% block content %}
+    <div class="col-signin">
+        <h2 class="display-4 mt-lg-3 text-shadow">Sign in</h2>
+        <p class="mx-4 px-4 text-shadow">Share the books you love and see what others are reading.</p>
+        <form method="POST" class="form-signup form-block my-4">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                <label for="username">Username <span class="text-muted">(unique account name)</span></label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="pin" name="pin" placeholder="PIN">
+                <label for="pin">PIN <span class="text-muted">(4-digit passcode)</span></label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Go to my account</button>
+        </form>
+        <p class="text-danger text-shadow">{{ get_flashed_messages()|join(' • ') }}</p>
+        <p class="text-shadow">Don't have an account yet?<br><a href="/signup">Sign up</a> instead</p>
+    </div>
+{% endblock %}

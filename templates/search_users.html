@@ -1,0 +1,27 @@
+{% extends "base_signed_in.html" %}
+{% block title %}Search Users{% endblock %}
+{% block heading %}Find a user{% endblock %}
+{% block content %}
+    <hr>
+    <form method="GET" class="py-3">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Username or display name</span>
+            <input type="text" class="form-control" name="name" value="{{ name }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    {% if users is not none %}
+        <h3>Matching users</h3>
+        {% if users|length == 0 %}
+            <p class="lead">No matching users found.</p>
+        {% endif %}
+        {% for user in users %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user[2] }} <span class="text-muted">{{ '(you)' if user[0] == current_user_id else '' }}</span></h5>
+                    <h6 class="card-subtitle mb-2"><a href="/users/{{ user[0] }}">@{{ user[1] }}</a></h6>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

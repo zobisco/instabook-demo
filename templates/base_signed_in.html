@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body %}
+    <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><span class="instabook-logo"><span class="insta">Ins<span class="short-letter">t</span>a</span><span class="book">book</span></span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav me-auto">
+                    <a role="button" href="/users/me" class="btn btn-outline-pink ms-0 ms-sm-2 mt-4 mt-sm-0">My page</a>
+                    <a role="button" href="/users/search" class="btn btn-outline-primary ms-0 ms-sm-2 mt-2 mt-sm-0">Users 🔍</a>
+                    <a role="button" href="/books/search" class="btn btn-outline-primary ms-0 ms-sm-2 mt-2 mt-sm-0">Books 🔍</a>
+                </div>
+                <form method="POST" action="/signout" class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-pink mt-4 mt-sm-0">Sign out</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <main class="container pt-6 py-4">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="display-4">{% block heading %}{% endblock %}</h1>
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

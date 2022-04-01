@@ -1,0 +1,36 @@
+{% extends "base_signed_in.html" %}
+{% block title %}{{ book_details[1] }}{% endblock %}
+{% block heading %}{{ book_details[1] }}{% endblock %}
+{% block content %}
+    <h2><span class="text-muted">By</span> {{ book_details[2] }}</h2>
+    <p class="lead">
+        <span class="text-muted">Average rating:</span> <strong class="text-pink fw-bold">{{ book_details[3] }} star(s)</strong>
+        <span class="d-none d-sm-inline">&bullet;</span>
+        <span class="d-inline d-sm-none"><br></span>
+        <span class="text-muted">Your rating:</span>
+        {% if current_user_score is not none %}
+            <strong class="text-pink fw-bold">{{ current_user_score }} star(s)</strong>
+            <br>
+            <form method="POST" action="/books/{{ book_details[0] }}/unrate">
+                <a role="button" href="/books/{{ book_details[0] }}/rate" class="btn btn-outline-primary me-1 mb-1">Update rating</a>
+                <button type="submit" class="btn btn-outline-pink mb-1">Remove rating</button>
+            </form>
+        {% else %}
+            <strong class="text-muted fw-bold">not yet rated</strong>
+            <br>
+            <div>
+                <a role="button" href="/books/{{ book_details[0] }}/rate" class="btn btn-outline-primary mb-1">Add a rating</a>
+            </div>
+        {% endif %}
+    </p>
+    <hr>
+    <h3>Recent ratings</h3>
+    {% for rating in book_ratings %}
+        <div class="card mt-3">
+            <div class="card-body">
+                {{ 'You' if rating[0] == current_user_id else rating[2] }} (<a href="/users/{{ rating[0] }}">@{{ rating[1] }}</a>) rated it <strong class="text-pink">{{ rating[3] }} star(s)</strong>.
+                {{ 'Your' if rating[0] == current_user_id else 'Their' }} review: <em>{{ rating[4] }}</em>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

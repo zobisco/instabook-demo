@@ -1,0 +1,28 @@
+{% extends "base_signed_in.html" %}
+{% block title %}Search Books{% endblock %}
+{% block heading %}Find a book{% endblock %}
+{% block content %}
+    <hr>
+    <form method="GET" class="py-3">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Book title</span>
+            <input type="text" class="form-control" name="title" value="{{ title }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    {% if books is not none %}
+        <h3>Matching books</h3>
+        {% if books|length == 0 %}
+            <p class="lead">No matching books found.</p>
+        {% endif %}
+        {% for book in books %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/books/{{ book[0] }}">{{ book[1] }}</a></h5>
+                    <h6 class="card-subtitle mb-2">{{ book[2] }}</h6>
+                    <span>Average rating: <strong class="text-pink">{{ book[3] }}</strong></span>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
